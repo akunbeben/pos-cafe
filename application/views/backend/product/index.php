@@ -24,6 +24,11 @@
                 <div class="col-12">
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
                     <div class="card">
+                        <div class="card-header">
+                            <div class="text-right">
+                                <a class="btn btn-secondary" href="<?= base_url('product/add'); ?>"><i class="fa fa-send"></i> Add Product</a>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <table id="example1" class="table table-hover">
                                 <thead>

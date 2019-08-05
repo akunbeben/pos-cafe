@@ -74,4 +74,9 @@ class Products extends CI_Model
     {
         $this->db->delete('products', ['id' => $id]);
     }
+
+    public function addProduct($param)
+    {
+        $this->db->insert('products', $param);
+    }
 }
