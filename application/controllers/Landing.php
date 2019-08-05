@@ -21,6 +21,8 @@ class Landing extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('frontend/index');
+		$this->load->model('products');
+		$data['products'] = $this->products->getProductFrontend()->result_array();
+		$this->load->view('frontend/index', $data);
 	}
 }

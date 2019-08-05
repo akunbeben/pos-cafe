@@ -22,6 +22,7 @@
 
             <div class="row">
                 <div class="col-12">
+                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
                     <div class="card">
                         <div class="card-body">
                             <table id="example1" class="table table-hover">
@@ -42,12 +43,12 @@
                                             <td class="text-center"><?= $no++; ?></td>
                                             <td><?= $product['item_name']; ?></td>
                                             <td><?= $product['selling_price']; ?></td>
-                                            <td><?= $product['category']; ?></td>
-                                            <td><?= $product['unit']; ?></td>
+                                            <td><?= $product['cat_title']; ?></td>
+                                            <td><?= $product['unit_title']; ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('products/view/') . $product['id'] ?>" class="btn-sm btn-success"><i class="fa fa-eye"></i></a>
-                                                <a href="<?= base_url('products/edit/') . $product['id'] ?>" class="btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
-                                                <a href="<?= base_url('products/delete/') . $product['id'] ?>" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                                <a href="<?= base_url('product/view/') . $product['id'] ?>" class="btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                                                <a href="<?= base_url('product/edit/') . $product['id'] ?>" class="btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= base_url('product/delete/') . $product['id'] ?>" class="btn-sm btn-danger tombol-hapus"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

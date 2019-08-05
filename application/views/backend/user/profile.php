@@ -28,8 +28,8 @@
 
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
-                    <div class="col-md-4 mt-3 pl-2">
-                        <img src="<?= base_url('uploads/profile/') . $user['image']; ?>" class="card-img" alt="Profile Image">
+                    <div class="col-md-4 mt-3 pl-3">
+                        <img src="<?= base_url('uploads/profile/') . $user['image']; ?>" class="img-thumbnail" alt="Profile Image">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
