@@ -90,10 +90,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('customers'); ?>" class="nav-link">
+                            <a href="<?= base_url('category'); ?>" class="nav-link">
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
-                                    Customers
+                                    Categories
                                 </p>
                             </a>
                         </li>

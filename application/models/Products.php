@@ -33,18 +33,6 @@ class Products extends CI_Model
         return $this->db->get();
     }
 
-    public function getCat()
-    {
-        $this->db->from('category');
-        return $this->db->get();
-    }
-
-    public function getUnit()
-    {
-        $this->db->from('units');
-        return $this->db->get();
-    }
-
     public function updateProduct($param = null, $id_prod)
     {
         if ($param['image'] == null) {

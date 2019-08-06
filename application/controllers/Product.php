@@ -9,6 +9,7 @@ class Product extends CI_Controller
         is_not_login();
         $this->load->model('auth_model', 'auth');
         $this->load->model('products');
+        $this->load->model('properties');
     }
 
     public function index()
@@ -38,8 +39,8 @@ class Product extends CI_Controller
         $data['title'] = 'Edit Product';
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $data['prod'] = $this->products->detailProd($id)->row_array();
-        $data['cat'] = $this->products->getCat()->result_array();
-        $data['unit'] = $this->products->getUnit()->result_array();
+        $data['cat'] = $this->properties->getCat()->result_array();
+        $data['unit'] = $this->properties->getUnit()->result_array();
 
         $get_image = $this->products->detailProd($id)->row_array();
         $id_prod = $id;
@@ -81,7 +82,6 @@ class Product extends CI_Controller
                     'category'          => $this->input->post('category'),
                     'unit'              => $this->input->post('unit')
                 ];
-                // var_dump($param);
                 $this->products->updateProduct($param, $id_prod);
                 $this->session->set_flashdata('message', 'Data updated successfully.');
                 redirect('product/');
@@ -106,8 +106,8 @@ class Product extends CI_Controller
         $this->load->library('form_validation');
         $data['title'] = 'Add Product';
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['cat'] = $this->products->getCat()->result_array();
-        $data['unit'] = $this->products->getUnit()->result_array();
+        $data['cat'] = $this->properties->getCat()->result_array();
+        $data['unit'] = $this->properties->getUnit()->result_array();
 
         $this->form_validation->set_rules('item', 'Item Name', 'required|trim');
         $this->form_validation->set_rules('purchase_price', 'Purchase Price', 'required|trim');

@@ -58,8 +58,9 @@
                         <label for="category" class="col-sm-2 col-form-label">Category</label>
                         <div class="col-sm-6">
                             <select name="category" id="category" class="form-control">
-                                <option value="<?= $cat[0]['id']; ?>"><?= $cat[0]['cat_title']; ?></option>
-                                <option value="<?= $cat[1]['id']; ?>"><?= $cat[1]['cat_title']; ?></option>
+                                <?php foreach ($cat as $key => $category) : ?>
+                                    <option value="<?= $category['id']; ?>"><?= $category['cat_title']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -68,8 +69,9 @@
                         <label for="unit" class="col-sm-2 col-form-label">Unit</label>
                         <div class="col-sm-6">
                             <select name="unit" id="unit" class="form-control">
-                                <option value="<?= $unit[0]['id']; ?>"><?= $unit[0]['unit_title']; ?></option>
-                                <option value="<?= $unit[1]['id']; ?>"><?= $unit[1]['unit_title']; ?></option>
+                                <?php foreach ($unit as $key => $units) : ?>
+                                    <option value="<?= $units['id']; ?>"><?= $units['unit_title']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
