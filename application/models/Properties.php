@@ -8,10 +8,16 @@ class Properties extends CI_Model
         $this->db->insert('category', $param);
     }
 
-    public function getCat()
+    public function getCat($id = null)
     {
-        $this->db->from('category');
-        return $this->db->get();
+        if ($id == null) {
+            $this->db->from('category');
+            return $this->db->get();
+        } else {
+            $this->db->from('category');
+            $this->db->where('id', $id);
+            return $this->db->get();
+        }
     }
 
     public function getUnit()
@@ -23,5 +29,12 @@ class Properties extends CI_Model
     public function delete($id)
     {
         $this->db->delete('category', ['id' => $id]);
+    }
+
+    public function edit($param)
+    {
+        $this->db->set('cat_title', $param['cat_title']);
+        $this->db->where('id', $param['id']);
+        $this->db->update('category', $param);
     }
 }

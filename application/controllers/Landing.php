@@ -22,7 +22,25 @@ class Landing extends CI_Controller
 	public function index()
 	{
 		$this->load->model('products');
+		$this->load->model('reservation');
+		$this->load->library('form_validation');
 		$data['products'] = $this->products->getProductFrontend()->result_array();
-		$this->load->view('frontend/index', $data);
+
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('phone', 'Phone', 'required|trim');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('frontend/index', $data);
+		} else {
+			$param = [
+				'id'			=> null,
+				'name'			=> $this->input->post('name'),
+				'phone'			=> $this->input->post('phone'),
+				'booking_at'	=> time()
+			];
+			$this->reservation->booking($param);
+			$this->session->set_flashdata('message', 'Your reservation is in progress, we will contact you as soon as possible.');
+			redirect(base_url());
+		}
 	}
 }

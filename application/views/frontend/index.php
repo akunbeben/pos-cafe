@@ -153,21 +153,33 @@
     <section class="page-section" id="contact">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mt-0">Let's Get In Touch!</h2>
-                    <hr class="divider my-4">
+                <div class="flash-msg" data-flashmsg="<?= $this->session->flashdata('message'); ?>"></div>
+                <div class="col-lg-6 text-center">
+                    <h2 class="mt-0">Let's have a seat in our place!</h2>
+                    <hr class="divider">
                     <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 ml-auto text-center">
-                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
-                    <div>+1 (202) 555-0149</div>
-                </div>
-                <div class="col-lg-4 mr-auto text-center">
-                    <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                    <!-- Make sure to change the email address in anchor text AND the link below! -->
-                    <a class="d-block" href="mailto:contact@yourwebsite.com">contact@yourwebsite.com</a>
+                    <form action="" method="post">
+                        <div class="form-group row">
+                            <div class="col-sm">
+                                <?= form_error('name', '<p class="text-danger">', '</p>'); ?>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Your name....">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm">
+                                <?= form_error('phone', '<p class="text-danger">', '</p>'); ?>
+                                <input type="number" class="form-control" name="phone" id="phone" placeholder="Your phone number....">
+                            </div>
+                        </div>
+
+                        <div class="form-group row justify-content-end">
+                            <div class="col-sm">
+                                <div class="col-sm">
+                                    <button type="submit" class="btn btn-primary">Booking now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -190,6 +202,8 @@
 
     <!-- Custom scripts for this template -->
     <script src="<?= base_url('frontend/'); ?>js/creative.min.js"></script>
+    <script src="<?= base_url('backend'); ?>/swal/dist/sweetalert2.all.min.js"></script>
+    <script src="<?= base_url('backend'); ?>/myscript.js"></script>
 
 </body>
 

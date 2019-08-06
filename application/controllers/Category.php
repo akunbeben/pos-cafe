@@ -21,7 +21,6 @@ class Category extends CI_Controller
     {
         $data['title'] = 'Product properties - Add category';
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['cat'] = $this->properties->getCat()->result_array();
 
         $this->load->library('form_validation');
         $this->form_validation->set_rules('category', 'Category', 'required|trim');
@@ -47,6 +46,30 @@ class Category extends CI_Controller
         } else {
             $this->properties->delete($id);
             $this->session->set_flashdata('message', 'Category deleted.');
+            redirect('category/');
+        }
+    }
+
+    public function edit($id)
+    {
+        $data['title'] = 'Product properties - Edit category';
+        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['cat'] = $this->properties->getCat($id)->row_array();
+
+        $id_prod = $id;
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('category', 'Category', 'required|trim');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('backend/template', 'backend/category/edit', $data);
+        } else {
+            $param = [
+                'id' => $id_prod,
+                'cat_title' => $this->input->post('category')
+            ];
+            $this->properties->edit($param);
+            $this->session->set_flashdata('message', 'Category updated!.');
             redirect('category/');
         }
     }

@@ -91,7 +91,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('category'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-users"></i>
+                                <i class="nav-icon fa fa-info"></i>
                                 <p>
                                     Categories
                                 </p>

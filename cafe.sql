@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2019 at 06:38 PM
+-- Generation Time: Aug 06, 2019 at 01:05 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `cafe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `cat_title` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `cat_title`) VALUES
+(1, 'Foods'),
+(2, 'Drinks'),
+(3, 'Snacks'),
+(14, 'Wine');
 
 -- --------------------------------------------------------
 
@@ -43,6 +64,75 @@ CREATE TABLE `employee` (
 INSERT INTO `employee` (`id`, `name`, `nik`, `address`, `phone`) VALUES
 (1, 'Benny Rahmat', '6372041006970002', 'Jalan Sukamara No 11, Landasan Ulin Utara, Liang Anggang, Kota Banjarbaru.', '082253054008'),
 (2, 'Charina Zahratunnisa', '6372041208030001', 'Jalan Sukamara No 11, Landasan Ulin Utara, Liang Anggang, Kota Banjarbaru.', '087777221122');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `item_name` varchar(128) NOT NULL,
+  `image` varchar(128) NOT NULL,
+  `purchase_price` int(11) NOT NULL,
+  `selling_price` int(11) NOT NULL,
+  `profit` int(11) NOT NULL,
+  `category` int(2) NOT NULL,
+  `unit` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `item_name`, `image`, `purchase_price`, `selling_price`, `profit`, `category`, `unit`) VALUES
+(1, 'Champagne', 'Akarua-winery-650x350.jpg', 50000, 120000, 70000, 14, 1),
+(2, 'Rum Busted Barrel', 'bustedbarrel-650x350.jpg', 80000, 150000, 70000, 14, 1),
+(3, 'Pepperoni Pizza', 'pepperoni-pizza-dough-boys-vb-650x350.jpg', 50000, 100000, 50000, 1, 2),
+(5, 'Chicken Nugget', 'slider3.jpg', 10000, 18000, 8000, 3, 1),
+(6, 'Grilled Beef', 'The-Meetball-Place-@foodNfest-noBSfood-1-650x350.jpg', 80000, 190000, 110000, 1, 2),
+(7, 'Fried Chicken', 'buffalo-chicken-meatballs-coated-pic-650x3501.jpg', 25000, 50000, 25000, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `phone` varchar(128) NOT NULL,
+  `booking_at` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `name`, `phone`, `booking_at`) VALUES
+(1, 'Dewi Sunartini', '081351727648', '1565089094'),
+(2, 'Hendy Prasetyo', '085391407778', '1565089212');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units`
+--
+
+CREATE TABLE `units` (
+  `id` int(11) NOT NULL,
+  `unit_title` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`id`, `unit_title`) VALUES
+(1, 'PCS'),
+(2, 'Porsi');
 
 -- --------------------------------------------------------
 
@@ -74,9 +164,35 @@ INSERT INTO `user` (`id`, `employee_id`, `username`, `password`, `email`, `image
 --
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category` (`category`),
+  ADD KEY `unit` (`unit`);
+
+--
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -91,9 +207,33 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `units`
+--
+ALTER TABLE `units`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -105,6 +245,13 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`id`),
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`unit`) REFERENCES `units` (`id`);
 
 --
 -- Constraints for table `user`

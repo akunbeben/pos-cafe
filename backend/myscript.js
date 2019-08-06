@@ -27,3 +27,13 @@ $('.tombol-hapus').on('click', function (e) {
     })
 
 });
+
+const flashMsg = $('.flash-msg').data('flashmsg');
+
+if (flashMsg) {
+    Swal.fire({
+        title: 'Reservation',
+        text: flashMsg,
+        type: 'success'
+    });
+}
