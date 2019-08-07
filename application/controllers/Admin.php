@@ -9,12 +9,14 @@ class Admin extends CI_Controller
         is_not_login();
         $this->load->model('auth_model', 'auth');
         $this->load->model('products');
+        $this->load->model('reservations');
     }
     public function index()
     {
         $data['title'] = 'Admin Area';
         $data['prod'] = $this->products->getProduct()->num_rows();
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $this->template->load('backend/template', 'backend/admin/index', $data);
     }
 }

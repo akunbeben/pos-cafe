@@ -8,14 +8,20 @@ class Reservations extends CI_Model
         $this->db->insert('reservation', $param);
     }
 
-    public function get()
+    public function get($param = null)
     {
-        $this->db->select('reservation.id, reservation.name, reservation.phone, booking_status.status_b, reservation.booking_at');
-        $this->db->from('reservation');
-        $this->db->join('booking_status', 'booking_status.id = reservation.status');
-        $this->db->order_by('status', 'ASC');
-        $this->db->order_by('booking_at', 'DESC');
-        return $this->db->get();
+        if ($param == null) {
+            $this->db->select('reservation.id, reservation.name, reservation.phone, booking_status.status_b, reservation.booking_at');
+            $this->db->from('reservation');
+            $this->db->join('booking_status', 'booking_status.id = reservation.status');
+            $this->db->order_by('status', 'ASC');
+            $this->db->order_by('booking_at', 'ASC');
+            return $this->db->get();
+        } else {
+            $this->db->from('reservation');
+            $this->db->where('status', $param);
+            return $this->db->get();
+        }
     }
 
     public function check($param, $id)
