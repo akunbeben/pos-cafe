@@ -22,7 +22,7 @@ class Landing extends CI_Controller
 	public function index()
 	{
 		$this->load->model('products');
-		$this->load->model('reservation');
+		$this->load->model('reservations');
 		$this->load->library('form_validation');
 		$data['products'] = $this->products->getProductFrontend()->result_array();
 
@@ -38,7 +38,7 @@ class Landing extends CI_Controller
 				'phone'			=> $this->input->post('phone'),
 				'booking_at'	=> time()
 			];
-			$this->reservation->booking($param);
+			$this->reservations->booking($param);
 			$this->session->set_flashdata('message', 'Your reservation is in progress, we will contact you as soon as possible.');
 			redirect(base_url());
 		}

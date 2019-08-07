@@ -17,4 +17,18 @@ class Reservation extends CI_Controller
         $data['booking'] = $this->reservations->get()->result_array();
         $this->template->load('backend/template', 'backend/reservation/index', $data);
     }
+
+    public function check($id = null)
+    {
+        if ($id == null) {
+            $this->session->set_flashdata('message', 'Id cannot be empty.');
+            redirect('category/');
+        } else {
+            $id_new = $id;
+            $param = '3';
+            $this->reservations->check($param, $id_new);
+            $this->session->set_flashdata('message', 'Booking completed!.');
+            redirect('reservation/');
+        }
+    }
 }

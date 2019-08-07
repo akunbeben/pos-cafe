@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2019 at 01:05 PM
+-- Generation Time: Aug 07, 2019 at 09:19 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `cafe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_status`
+--
+
+CREATE TABLE `booking_status` (
+  `id` int(11) NOT NULL,
+  `status_b` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `booking_status`
+--
+
+INSERT INTO `booking_status` (`id`, `status_b`) VALUES
+(1, 'pending'),
+(3, 'completed');
 
 -- --------------------------------------------------------
 
@@ -104,6 +123,7 @@ CREATE TABLE `reservation` (
   `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `phone` varchar(128) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '1',
   `booking_at` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -111,9 +131,12 @@ CREATE TABLE `reservation` (
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`id`, `name`, `phone`, `booking_at`) VALUES
-(1, 'Dewi Sunartini', '081351727648', '1565089094'),
-(2, 'Hendy Prasetyo', '085391407778', '1565089212');
+INSERT INTO `reservation` (`id`, `name`, `phone`, `status`, `booking_at`) VALUES
+(1, 'Dewi Sunartini', '081351727648', 1, '1565089094'),
+(2, 'Hendy Prasetyo', '085391407778', 3, '1565089212'),
+(3, 'Benny Rahmat', '082253054008', 3, '1565160122'),
+(4, 'John Doe', '081213451324', 1, '1565161220'),
+(5, 'Tsar Alghifari', '082122223241', 3, '1565161505');
 
 -- --------------------------------------------------------
 
@@ -164,6 +187,12 @@ INSERT INTO `user` (`id`, `employee_id`, `username`, `password`, `email`, `image
 --
 
 --
+-- Indexes for table `booking_status`
+--
+ALTER TABLE `booking_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -187,7 +216,8 @@ ALTER TABLE `products`
 -- Indexes for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `units`
@@ -205,6 +235,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `booking_status`
+--
+ALTER TABLE `booking_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -228,7 +264,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `units`
@@ -250,8 +286,14 @@ ALTER TABLE `user`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`id`),
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`unit`) REFERENCES `units` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`unit`) REFERENCES `units` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`status`) REFERENCES `booking_status` (`id`);
 
 --
 -- Constraints for table `user`

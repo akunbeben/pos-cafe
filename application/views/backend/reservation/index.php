@@ -22,7 +22,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+                    <div class="flash-msg" data-flashmsg="<?= $this->session->flashdata('message'); ?>"></div>
                     <div class="card">
                         <div class="card-body">
                             <table id="example1" class="table table-hover">
@@ -49,7 +49,7 @@
                                             <td><?= date("d m Y h:i a", $b_status['booking_at']); ?></td>
                                             <td class="text-center">
                                                 <?php if ($b_status['status_b'] == 'pending') : ?>
-                                                    <a href="<?= base_url('reservation/check/') . $b_status['id'] ?>" class="btn-sm btn-warning"><i class="fa fa-check"></i></a>
+                                                    <a href="<?= base_url('reservation/check/') . $b_status['id'] ?>" class="btn-sm btn-warning tombol-baru" id="tombol-baru"><i class="fa fa-check"></i></a>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
