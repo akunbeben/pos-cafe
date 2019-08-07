@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Product Categories</h1>
+                        <h1>Reservations</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Category</li>
+                            <li class="breadcrumb-item active">Reservations</li>
                         </ol>
                     </div>
                 </div>
@@ -24,11 +24,6 @@
                 <div class="col-12">
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
                     <div class="card">
-                        <div class="card-header">
-                            <div class="text-right">
-                                <a class="btn btn-secondary" href="<?= base_url('category/add'); ?>"><i class="fa fa-send"></i> Add Category</a>
-                            </div>
-                        </div>
                         <div class="card-body">
                             <table id="example1" class="table table-hover">
                                 <thead>
@@ -51,10 +46,11 @@
                                             <td>
                                                 <p class="badge badge-<?= $b_status['status_b'] == 'pending' ? 'danger' : $b_status['status_b'] == 'on-progress' ? 'warning' : 'success' ?>"><?= $b_status['status_b']; ?></p>
                                             </td>
-                                            <td><?= $b_status['booking_at']; ?></td>
+                                            <td><?= date("d m Y h:i a", $b_status['booking_at']); ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('category/edit/') . $b_status['id'] ?>" class="btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
-                                                <a href="<?= base_url('category/delete/') . $b_status['id'] ?>" class="btn-sm btn-danger tombol-hapus"><i class="fa fa-trash"></i></a>
+                                                <?php if ($b_status['status_b'] == 'pending') : ?>
+                                                    <a href="<?= base_url('reservation/check/') . $b_status['id'] ?>" class="btn-sm btn-warning"><i class="fa fa-check"></i></a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
