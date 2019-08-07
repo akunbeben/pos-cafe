@@ -14,6 +14,7 @@ class Reservations extends CI_Model
         $this->db->from('reservation');
         $this->db->join('booking_status', 'booking_status.id = reservation.status');
         $this->db->order_by('status', 'ASC');
+        $this->db->order_by('booking_at', 'DESC');
         return $this->db->get();
     }
 
