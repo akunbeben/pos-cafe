@@ -97,6 +97,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('reservation'); ?>" class="nav-link">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                    Reservation
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-shopping-cart"></i>
