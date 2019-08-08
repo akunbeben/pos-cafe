@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2019 at 09:19 AM
+-- Generation Time: Aug 08, 2019 at 04:53 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -124,19 +124,19 @@ CREATE TABLE `reservation` (
   `name` varchar(128) NOT NULL,
   `phone` varchar(128) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
-  `booking_at` varchar(128) NOT NULL
+  `booking_at` varchar(128) NOT NULL,
+  `tag` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`id`, `name`, `phone`, `status`, `booking_at`) VALUES
-(1, 'Dewi Sunartini', '081351727648', 1, '1565089094'),
-(2, 'Hendy Prasetyo', '085391407778', 3, '1565089212'),
-(3, 'Benny Rahmat', '082253054008', 3, '1565160122'),
-(4, 'John Doe', '081213451324', 1, '1565161220'),
-(5, 'Tsar Alghifari', '082122223241', 3, '1565161505');
+INSERT INTO `reservation` (`id`, `name`, `phone`, `status`, `booking_at`, `tag`) VALUES
+(9, 'Benny Rahmat', '082253054008', 3, '1565230304', 'Charina Zahratunnisa'),
+(10, 'Dewi Sunartini', '081351727648', 3, '1565230365', 'Benny Rahmat'),
+(11, 'Charina Zahratunnisa', '082355130919', 3, '1565231155', 'Benny Rahmat'),
+(12, 'Ikhtiar', '081349798787', 3, '1565231280', 'Benny Rahmat');
 
 -- --------------------------------------------------------
 
@@ -155,7 +155,8 @@ CREATE TABLE `units` (
 
 INSERT INTO `units` (`id`, `unit_title`) VALUES
 (1, 'PCS'),
-(2, 'Porsi');
+(2, 'Can'),
+(4, 'Pack');
 
 -- --------------------------------------------------------
 
@@ -179,8 +180,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `employee_id`, `username`, `password`, `email`, `image`, `role`, `date_created`) VALUES
-(1, 1, 'akunbeben', '$2y$10$m2J9wPk4gtbJn3qEQbc.yeSIZBVcG0kPQCU8TnF4IhTfGdVYFFRKq', 'akunbeben@gmail.com', '47581581_2361714964051683_8522032934363335063_n1.jpg', 1, 1563185660),
-(2, 2, 'charinazn', '$2y$10$m2J9wPk4gtbJn3qEQbc.yeSIZBVcG0kPQCU8TnF4IhTfGdVYFFRKq', 'charinazn@gmail.com', 'default.png', 1, 1563185660);
+(1, 1, 'akunbeben', '$2y$10$m2J9wPk4gtbJn3qEQbc.yeSIZBVcG0kPQCU8TnF4IhTfGdVYFFRKq', 'akunbeben@gmail.com', '47581581_2361714964051683_8522032934363335063_n2.jpg', 1, 1563185660),
+(2, 2, 'charinazn', '$2y$10$m2J9wPk4gtbJn3qEQbc.yeSIZBVcG0kPQCU8TnF4IhTfGdVYFFRKq', 'charinazn@gmail.com', 'default.png', 2, 1563185660);
 
 --
 -- Indexes for dumped tables
@@ -264,13 +265,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
