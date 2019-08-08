@@ -10,10 +10,12 @@ class Product extends CI_Controller
         $this->load->model('auth_model', 'auth');
         $this->load->model('products');
         $this->load->model('properties');
+        $this->load->model('reservations');
     }
 
     public function index()
     {
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $data['title'] = 'Products List';
         $data['products'] = $this->products->getProduct()->result_array();
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
@@ -22,6 +24,7 @@ class Product extends CI_Controller
 
     public function view($id = null)
     {
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $data['title'] = 'View product detail';
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $data['detailprod'] = $this->products->detailProd($id)->row_array();
@@ -36,6 +39,7 @@ class Product extends CI_Controller
     public function edit($id = null)
     {
         $this->load->library('form_validation');
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $data['title'] = 'Edit Product';
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $data['prod'] = $this->products->detailProd($id)->row_array();
@@ -103,6 +107,7 @@ class Product extends CI_Controller
 
     public function add()
     {
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $this->load->library('form_validation');
         $data['title'] = 'Add Product';
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();

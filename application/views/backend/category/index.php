@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Product Categories</h1>
+                        <h1>Product Properties</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -25,8 +25,13 @@
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
                     <div class="card">
                         <div class="card-header">
-                            <div class="text-right">
-                                <a class="btn btn-secondary" href="<?= base_url('category/add'); ?>"><i class="fa fa-send"></i> Add Category</a>
+                            <div class="row">
+                                <div class="col-md-6 card-title text-left">
+                                    <h4>Product Category</h4>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a class="btn btn-secondary" href="<?= base_url('category/add'); ?>"><i class="fa fa-send"></i> Add Category</a>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body">
@@ -47,6 +52,52 @@
                                             <td class="text-center">
                                                 <a href="<?= base_url('category/edit/') . $category['id'] ?>" class="btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
                                                 <a href="<?= base_url('category/delete/') . $category['id'] ?>" class="btn-sm btn-danger tombol-hapus"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-6 card-title text-left">
+                                    <h4>Product Units</h4>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a class="btn btn-secondary" href="<?= base_url('category/addunit'); ?>"><i class="fa fa-send"></i> Add Units</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table id="example1" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px; text-align: center;">No</th>
+                                        <th>Category Title</th>
+                                        <th style="width: 100px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1;
+                                    foreach ($unit as $key => $un) : ?>
+                                        <tr>
+                                            <td class="text-center"><?= $no++; ?></td>
+                                            <td><?= $un['unit_title']; ?></td>
+                                            <td class="text-center">
+                                                <a href="<?= base_url('category/editunit/') . $un['id'] ?>" class="btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= base_url('category/delunit/') . $un['id'] ?>" class="btn-sm btn-danger tombol-hapus"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

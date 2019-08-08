@@ -14,7 +14,8 @@ class Reservation extends CI_Controller
     {
         $data['title'] = 'Reservation';
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['booking'] = $this->reservations->get()->result_array();
+        $data['booking'] = $this->reservations->get(1)->num_rows();
+        $data['bookings'] = $this->reservations->get()->result_array();
         $this->template->load('backend/template', 'backend/reservation/index', $data);
     }
 
@@ -24,8 +25,12 @@ class Reservation extends CI_Controller
             $this->session->set_flashdata('message', 'Id cannot be empty.');
             redirect('category/');
         } else {
+            $user = $this->auth->getuser($this->session->userdata('username'))->row_array();
             $id_new = $id;
-            $param = '3';
+            $param = [
+                'status'    => '3',
+                'tag'       => $user['name']
+            ];
             $this->reservations->check($param, $id_new);
             $this->session->set_flashdata('message', 'Booking completed!.');
             redirect('reservation/');

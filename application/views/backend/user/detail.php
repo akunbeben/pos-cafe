@@ -32,7 +32,7 @@
 
                             <h3 class="profile-username text-center"><?= $user['name']; ?></h3>
 
-                            <p class="text-muted text-center">Software Engineer</p>
+                            <p class="text-muted text-center"><?= $user['role'] == '1' ? 'Administrator' : 'Cashier'; ?></p>
 
                         </div>
                         <!-- /.card-body -->

@@ -26,8 +26,9 @@ class Reservations extends CI_Model
 
     public function check($param, $id)
     {
-        $this->db->set('status', $param);
+        $this->db->set('tag', $param['tag']);
+        $this->db->set('status', $param['status']);
         $this->db->where('id', $id);
-        $this->db->update('reservation');
+        $this->db->update('reservation', $param);
     }
 }

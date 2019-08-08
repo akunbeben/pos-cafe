@@ -9,9 +9,11 @@ class Profile extends CI_Controller
         is_not_login();
         $this->load->model('user_manage', 'users');
         $this->load->model('auth_model', 'auth');
+        $this->load->model('reservations');
     }
     public function index()
     {
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $data['title'] = 'My Profile';
         $this->template->load('backend/template', 'backend/user/profile', $data);
@@ -19,6 +21,7 @@ class Profile extends CI_Controller
 
     public function edit()
     {
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $this->load->library('form_validation');
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $data['title'] = 'Edit Profile';
@@ -57,6 +60,7 @@ class Profile extends CI_Controller
 
     public function detail()
     {
+        $data['booking'] = $this->reservations->get(1)->num_rows();
         $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $data['title'] = 'Detail Profile';
         $this->template->load('backend/template', 'backend/user/detail', $data);

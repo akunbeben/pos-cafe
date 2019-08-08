@@ -38,13 +38,13 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1;
-                                    foreach ($booking as $key => $b_status) : ?>
+                                    foreach ($bookings as $key => $b_status) : ?>
                                         <tr>
                                             <td class="text-center"><?= $no++; ?></td>
                                             <td><?= $b_status['name']; ?></td>
                                             <td><?= $b_status['phone']; ?></td>
                                             <td>
-                                                <p class="badge badge-<?= $b_status['status_b'] == 'pending' ? 'danger' : $b_status['status_b'] == 'on-progress' ? 'warning' : 'success' ?>"><?= $b_status['status_b']; ?></p>
+                                                <p class="badge badge-<?= $b_status['status_b'] == 'pending' ? 'danger' : 'success' ?>"><?= $b_status['status_b']; ?></p>
                                             </td>
                                             <td><?= date("d m Y h:i a", $b_status['booking_at']); ?></td>
                                             <td class="text-center">

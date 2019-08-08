@@ -71,37 +71,42 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-tachometer"></i>
-                                <p>
-                                    Dashboard
-                                    <!-- <span class="right badge badge-success">New</span> -->
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('product'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-archive"></i>
-                                <p>
-                                    Products
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('category'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-info"></i>
-                                <p>
-                                    Categories
-                                </p>
-                            </a>
-                        </li>
+                        <?php if ($user['role'] == 1) : ?>
+                            <li class="nav-header ml-2">FRONT OFFICE</li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin'); ?>" class="nav-link">
+                                    <i class="nav-icon fa fa-tachometer"></i>
+                                    <p>
+                                        Dashboard
+                                        <!-- <span class="right badge badge-success">New</span> -->
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('product'); ?>" class="nav-link">
+                                    <i class="nav-icon fa fa-archive"></i>
+                                    <p>
+                                        Products
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('category'); ?>" class="nav-link">
+                                    <i class="nav-icon fa fa-info"></i>
+                                    <p>
+                                        Categories
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <a href="<?= base_url('reservation'); ?>" class="nav-link">
                                 <i class="nav-icon fa fa-book"></i>
                                 <p>
                                     Reservation
+                                    <?php if ($booking >= 1) : ?>
+                                        <span class="right badge badge-danger">New</span>
+                                    <?php endif; ?>
                                 </p>
                             </a>
                         </li>
@@ -137,19 +142,21 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">BACK OF HOUSE</li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('employees'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-info"></i>
-                                <p>Employees</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('users'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-info"></i>
-                                <p>Users</p>
-                            </a>
-                        </li>
+                        <?php if ($user['role'] == 1) : ?>
+                            <li class="nav-header">BACK OFFICE</li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('employees'); ?>" class="nav-link">
+                                    <i class="nav-icon fa fa-circle-o text-info"></i>
+                                    <p>Employees</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('users'); ?>" class="nav-link">
+                                    <i class="nav-icon fa fa-circle-o text-info"></i>
+                                    <p>Users</p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
