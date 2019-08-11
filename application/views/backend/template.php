@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="<?= base_url('backend'); ?>/dist/css/adminlte.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="<?= base_url('backend'); ?>/plugins/datatables/dataTables.bootstrap4.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?= base_url('backend'); ?>/select2/dist/css/select2.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -37,6 +39,23 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell-o"></i>
+                        <?php if ($booking >= 1) : ?>
+                            <span class="badge badge-warning navbar-badge"><?= $booking; ?></span>
+                        <?php endif; ?>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header"><?= $booking; ?> Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <?php if ($booking >= 1) : ?>
+                            <a href="<?= base_url('reservation'); ?>" class="dropdown-item">
+                                <i class="fa fa-book mr-2"></i> <?= $booking; ?> new reservation
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
                         <i class="fa fa-sign-out"></i>
@@ -179,6 +198,8 @@
     <script src="<?= base_url('backend'); ?>/plugins/jquery/jquery.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url('backend'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="<?= base_url('backend'); ?>/select2/dist/js/select2.js"></script>
     <!-- DataTables -->
     <script src="<?= base_url('backend'); ?>/plugins/datatables/jquery.dataTables.js"></script>
     <script src="<?= base_url('backend'); ?>/plugins/datatables/dataTables.bootstrap4.js"></script>
@@ -192,7 +213,7 @@
     <script src="<?= base_url('backend'); ?>/dist/js/demo.js"></script>
     <script src="<?= base_url('backend'); ?>/swal/dist/sweetalert2.all.min.js"></script>
     <script src="<?= base_url('backend'); ?>/myscript.js"></script>
-
+    <script src="<?= base_url('backend'); ?>/btn.js"></script>
     <script>
         $(function() {
             $("#example1").DataTable();

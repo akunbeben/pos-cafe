@@ -18,6 +18,9 @@ class Auth extends CI_Controller
         $this->form_validation->set_message('required', 'Username or Password cannot be empty.');
         $data['title'] = 'Sample Cafe - Admin';
         if ($this->form_validation->run() == FALSE) {
+            if ($this->session->userdata('Login_Token')) {
+                redirect('admin/');
+            }
             $this->load->view('backend/login', $data);
         } else {
             $this->_dologin();
@@ -54,7 +57,7 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata(['employee_id', 'username', 'email', 'date_created']);
+        $this->session->unset_userdata(['Login_Token', 'employee_id', 'username', 'email', 'date_created']);
         $this->session->set_flashdata('message', '<div class="alert alert-success">You are logged out.</div>');
         redirect('auth');
     }

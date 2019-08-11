@@ -62,9 +62,10 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
+                <span class="info-box-text">Sales Today</span>
                 <span class="info-box-number">
-                  760
+                  14
+                  <small>Sales</small>
                 </span>
               </div>
               <!-- /.info-box-content -->

@@ -47,7 +47,7 @@
                                         <tr>
                                             <td class="text-center"><?= $no++; ?></td>
                                             <td><?= $product['item_name']; ?></td>
-                                            <td><?= $product['selling_price']; ?></td>
+                                            <td><?= rupiah($product['selling_price']); ?></td>
                                             <td><?= $product['cat_title']; ?></td>
                                             <td><?= $product['unit_title']; ?></td>
                                             <td class="text-center">
