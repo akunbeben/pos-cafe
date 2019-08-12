@@ -11,6 +11,7 @@ class Admin extends CI_Controller
         $this->load->model('products');
         $this->load->model('reservations');
     }
+
     public function index()
     {
         $data['title'] = 'Admin Area';

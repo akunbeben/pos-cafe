@@ -10,12 +10,13 @@ class Reservation extends CI_Controller
         $this->load->model('auth_model', 'auth');
         $this->load->model('reservations');
     }
+
     public function index()
     {
-        $data['title'] = 'Reservation';
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['booking'] = $this->reservations->get(1)->num_rows();
-        $data['bookings'] = $this->reservations->get()->result_array();
+        $data['title']      = 'Reservation';
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['bookings']   = $this->reservations->get()->result_array();
         $this->template->load('backend/template', 'backend/reservation/index', $data);
     }
 

@@ -13,18 +13,18 @@ class Profile extends CI_Controller
     }
     public function index()
     {
-        $data['booking'] = $this->reservations->get(1)->num_rows();
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['title'] = 'My Profile';
+        $data['title']      = 'My Profile';
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $this->template->load('backend/template', 'backend/user/profile', $data);
     }
 
     public function edit()
     {
-        $data['booking'] = $this->reservations->get(1)->num_rows();
         $this->load->library('form_validation');
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['title'] = 'Edit Profile';
+        $data['title']      = 'Edit Profile';
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
         // $data['test'] = $this->session->userdata('employee_id');
 
         $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
@@ -48,7 +48,7 @@ class Profile extends CI_Controller
                 }
             }
             $param = [
-                'name' => $this->input->post('name'),
+                'name'  => $this->input->post('name'),
                 'email' => $this->input->post('email'),
                 'image' => $new_name
             ];
@@ -60,9 +60,9 @@ class Profile extends CI_Controller
 
     public function detail()
     {
-        $data['booking'] = $this->reservations->get(1)->num_rows();
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['title'] = 'Detail Profile';
+        $data['title']      = 'Detail Profile';
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $this->template->load('backend/template', 'backend/user/detail', $data);
     }
 }

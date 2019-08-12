@@ -15,18 +15,18 @@ class Product extends CI_Controller
 
     public function index()
     {
-        $data['booking'] = $this->reservations->get(1)->num_rows();
-        $data['title'] = 'Products List';
-        $data['products'] = $this->products->getProduct()->result_array();
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['title']      = 'Products List';
+        $data['products']   = $this->products->getProduct()->result_array();
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $this->template->load('backend/template', 'backend/product/index', $data);
     }
 
     public function view($id = null)
     {
-        $data['booking'] = $this->reservations->get(1)->num_rows();
-        $data['title'] = 'View product detail';
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['title']      = 'View product detail';
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
         $data['detailprod'] = $this->products->detailProd($id)->row_array();
         if ($id == null) {
             $this->session->set_flashdata('message', 'Id cannot be empty.');
@@ -39,16 +39,16 @@ class Product extends CI_Controller
     public function edit($id = null)
     {
         $this->load->library('form_validation');
-        $data['booking'] = $this->reservations->get(1)->num_rows();
-        $data['title'] = 'Edit Product';
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['prod'] = $this->products->detailProd($id)->row_array();
-        $data['cat'] = $this->properties->getCat()->result_array();
-        $data['unit'] = $this->properties->getUnit()->result_array();
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['title']      = 'Edit Product';
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['prod']       = $this->products->detailProd($id)->row_array();
+        $data['cat']        = $this->properties->getCat()->result_array();
+        $data['unit']       = $this->properties->getUnit()->result_array();
 
-        $get_image = $this->products->detailProd($id)->row_array();
-        $id_prod = $id;
-        $image = $get_image['image'];
+        $get_image          = $this->products->detailProd($id)->row_array();
+        $id_prod            = $id;
+        $image              = $get_image['image'];
 
         $this->form_validation->set_rules('item', 'Item Name', 'required|trim');
         $this->form_validation->set_rules('purchase_price', 'Purchase Price', 'required|trim');
@@ -107,17 +107,17 @@ class Product extends CI_Controller
 
     public function add()
     {
-        $data['booking'] = $this->reservations->get(1)->num_rows();
         $this->load->library('form_validation');
-        $data['title'] = 'Add Product';
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['cat'] = $this->properties->getCat()->result_array();
-        $data['unit'] = $this->properties->getUnit()->result_array();
+        $data['title']      = 'Add Product';
+        $data['booking']    = $this->reservations->get(1)->num_rows();
+        $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['cat']        = $this->properties->getCat()->result_array();
+        $data['unit']       = $this->properties->getUnit()->result_array();
 
         $this->form_validation->set_rules('item', 'Item Name', 'required|trim');
         $this->form_validation->set_rules('purchase_price', 'Purchase Price', 'required|trim');
         $this->form_validation->set_rules('selling_price', 'Selling Price', 'required|trim');
-        // $this->form_validation->set_rules('image', 'Product Image', 'required|trim');
+
 
         if ($this->form_validation->run() == FALSE) {
             $this->template->load('backend/template', 'backend/product/add', $data);

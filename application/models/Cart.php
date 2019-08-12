@@ -61,20 +61,7 @@ class Cart extends CI_Model
     public function getCartDetail($id)
     {
         $this->db->from('cart');
-        // $this->db->join('products', 'products.id = cart.product_id');
         $this->db->where('product_id', $id);
         return $this->db->get();
-    }
-
-    public function addqty($id)
-    {
-        $query = $this->db->query('UPDATE cart set qty=(qty+1) where id=' . $id);
-        return $query;
-    }
-
-    public function minqty($id)
-    {
-        $query = $this->db->query('UPDATE cart set qty=(qty-1) where id=' . $id);
-        return $query;
     }
 }

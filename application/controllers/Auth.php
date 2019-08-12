@@ -16,7 +16,9 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required|trim');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
         $this->form_validation->set_message('required', 'Username or Password cannot be empty.');
+
         $data['title'] = 'Sample Cafe - Admin';
+
         if ($this->form_validation->run() == FALSE) {
             if ($this->session->userdata('Login_Token')) {
                 redirect('admin/');

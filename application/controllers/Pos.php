@@ -16,20 +16,20 @@ class Pos extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Point Of Sales';
-        $data['user'] = $this->auth->getuser($this->session->userdata('username'))->row_array();
-        $data['booking'] = $this->reservations->get(1)->num_rows();
-        $data['products'] = $this->cart->carts()->result_array();
-        $data['cart'] = $this->cart->getCartData()->result_array();
-        $data['invoice'] = FormatNoTrans(OtomatisID());
-        $data['grand_total'] = $this->cart->grandTotal();
+        $data['title']          = 'Point Of Sales';
+        $data['user']           = $this->auth->getuser($this->session->userdata('username'))->row_array();
+        $data['booking']        = $this->reservations->get(1)->num_rows();
+        $data['products']       = $this->cart->carts()->result_array();
+        $data['cart']           = $this->cart->getCartData()->result_array();
+        $data['invoice']        = FormatNoTrans(OtomatisID());
+        $data['grand_total']    = $this->cart->grandTotal();
+        $cash                   = $this->input->post('cash');
 
 
         $this->form_validation->set_rules('qty', 'Quantity', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->template->load('backend/template', 'backend/pos/index', $data);
-            // var_dump($product);
         } else {
             $param = [
                 'id'            => null,
@@ -42,13 +42,21 @@ class Pos extends CI_Controller
             $qty = $this->cart->getCartDetail($param['product_id'])->row_array();
 
             $isi = [
-                'id' => null,
-                'cart_id' => $qty['id'],
-                'sub_total' => $product['selling_price'] * $qty['qty']
+                'id'            => null,
+                'cart_id'       => $qty['id'],
+                'sub_total'     => $product['selling_price'] * $qty['qty']
             ];
             $this->cart->sub_total($isi);
             redirect('pos/');
         }
+    }
+
+    public function process()
+    {
+        $cash       = $this->input->post('cash');
+        $invoice    = FormatNoTrans(OtomatisID());
+        $cashier    = $this->auth->getuser($this->session->userdata('username'))->row()->name;
+        var_dump($cash);
     }
 
     public function delete($id)
@@ -61,20 +69,6 @@ class Pos extends CI_Controller
     public function clear()
     {
         $this->cart->clear();
-        redirect('pos/');
-    }
-
-    public function addqty($id)
-    {
-        $id_n = $id;
-        $this->cart->addqty($id_n);
-        redirect('pos/');
-    }
-
-    public function minqty($id)
-    {
-        $id_n = $id;
-        $this->cart->minqty($id_n);
         redirect('pos/');
     }
 }

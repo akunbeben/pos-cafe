@@ -105,7 +105,7 @@
                                             <td><?= rupiah($carts['selling_price'] * $carts['qty']); ?></td>
                                             <td class="text-center">
                                                 <!-- <a class="btn-sm btn-success" href="<?= base_url('pos/addqty/') . $carts['id']; ?>"><i class="fa fa-plus"></i></a>
-                                                                                                                                    <a class="btn-sm btn-warning" href="<?= base_url('pos/minqty/') . $carts['id']; ?>"><i class="fa fa-minus"></i></a> -->
+                                                                                                                                                                                                                                                                            <a class="btn-sm btn-warning" href="<?= base_url('pos/minqty/') . $carts['id']; ?>"><i class="fa fa-minus"></i></a> -->
                                                 <a class="btn-sm btn-danger tombol-hapus" href="<?= base_url('pos/delete/') . $carts['id']; ?>"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
@@ -118,13 +118,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <!-- form start -->
-                            <form role="form">
+                            <form role="form" method="post">
+                                <!-- form start -->
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label for="cash" class="col-sm-4 col-form-label">Cash</label>
                                         <div class="col-sm-8">
-                                            <input type="number" class="form-control" id="cash" name="cash">
+                                            <input type="number" class="form-control" id="cash" name="cash" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -138,7 +138,6 @@
                                 </div>
                                 <!-- /.card-body -->
                             </form>
-
                         </div>
                     </div>
                     <div class="col-md-6">
