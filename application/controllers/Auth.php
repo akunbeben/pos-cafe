@@ -9,6 +9,7 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('Auth_model', 'auth');
+        $this->load->model('cart');
     }
 
     public function index()
@@ -59,8 +60,13 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata(['Login_Token', 'employee_id', 'username', 'email', 'date_created']);
-        $this->session->set_flashdata('message', '<div class="alert alert-success">You are logged out.</div>');
-        redirect('auth');
+        if ($this->cart->getCartData()->num_rows() >= 1) {
+            $this->session->set_flashdata('message', 'There is an pending order, please complete it before logout.');
+            redirect('pos/');
+        } else {
+            $this->session->unset_userdata(['Login_Token', 'employee_id', 'username', 'email', 'date_created']);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">You are logged out.</div>');
+            redirect('auth');
+        }
     }
 }

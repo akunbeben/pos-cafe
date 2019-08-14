@@ -22,11 +22,11 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini <?= $this->uri->segment(1) == 'pos' ? 'sidebar-collapse' : ''; ?>">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+        <nav class="main-header navbar navbar-expand bg-white elevation-1 navbar-light border-bottom">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -66,7 +66,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary">
+        <aside class="main-sidebar sidebar-dark-info">
             <!-- Brand Logo -->
             <a href="<?= base_url('admin'); ?>" class="brand-link">
                 <img src="<?= base_url('backend'); ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -93,7 +93,7 @@
                         <?php if ($user['role'] == 1) : ?>
                             <li class="nav-header ml-2">FRONT OFFICE</li>
                             <li class="nav-item">
-                                <a href="<?= base_url('admin'); ?>" class="nav-link">
+                                <a href="<?= base_url('admin'); ?>" class="nav-link <?= $this->uri->segment(1) == 'admin' ? 'active' : ''; ?>">
                                     <i class="nav-icon fa fa-tachometer"></i>
                                     <p>
                                         Dashboard
@@ -102,7 +102,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url('product'); ?>" class="nav-link">
+                                <a href="<?= base_url('product'); ?>" class="nav-link <?= $this->uri->segment(1) == 'product' ? 'active' : ''; ?>">
                                     <i class="nav-icon fa fa-archive"></i>
                                     <p>
                                         Products
@@ -110,7 +110,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url('category'); ?>" class="nav-link">
+                                <a href="<?= base_url('category'); ?>" class="nav-link <?= $this->uri->segment(1) == 'category' ? 'active' : ''; ?>">
                                     <i class="nav-icon fa fa-info"></i>
                                     <p>
                                         Categories
@@ -119,7 +119,7 @@
                             </li>
                         <?php endif; ?>
                         <li class="nav-item">
-                            <a href="<?= base_url('reservation'); ?>" class="nav-link">
+                            <a href="<?= base_url('reservation'); ?>" class="nav-link <?= $this->uri->segment(1) == 'reservation' ? 'active' : ''; ?>">
                                 <i class="nav-icon fa fa-book"></i>
                                 <p>
                                     Reservation
@@ -129,7 +129,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview <?= $this->uri->segment(1) == 'pos' ? 'menu-open' : ''; ?>">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-shopping-cart"></i>
                                 <p>
@@ -139,13 +139,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= base_url('pos'); ?>" class="nav-link">
+                                    <a href="<?= base_url('pos'); ?>" class="nav-link <?= $this->uri->segment(1) == 'pos' ? 'active' : ''; ?>">
                                         <i class="fa fa-circle-o nav-icon text-info"></i>
                                         <p>Point Of Sales</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('invent'); ?>" class="nav-link">
+                                    <a href="<?= base_url('invent'); ?>" class="nav-link <?= $this->uri->segment(1) == 'invent' ? 'active' : ''; ?>">
                                         <i class="fa fa-circle-o nav-icon text-danger"></i>
                                         <p>Inventory Point</p>
                                     </a>
@@ -214,6 +214,7 @@
     <script src="<?= base_url('backend'); ?>/swal/dist/sweetalert2.all.min.js"></script>
     <script src="<?= base_url('backend'); ?>/myscript.js"></script>
     <script src="<?= base_url('backend'); ?>/btn.js"></script>
+    <script src="<?= base_url('backend'); ?>/cart.js"></script>
     <script>
         $(function() {
             $("#example1").DataTable();

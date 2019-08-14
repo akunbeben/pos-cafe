@@ -23,7 +23,6 @@ class Pos extends CI_Controller
         $data['cart']           = $this->cart->getCartData()->result_array();
         $data['invoice']        = FormatNoTrans(OtomatisID());
         $data['grand_total']    = $this->cart->grandTotal();
-        $cash                   = $this->input->post('cash');
 
 
         $this->form_validation->set_rules('qty', 'Quantity', 'required');
@@ -53,10 +52,11 @@ class Pos extends CI_Controller
 
     public function process()
     {
-        $cash       = $this->input->post('cash');
-        $invoice    = FormatNoTrans(OtomatisID());
-        $cashier    = $this->auth->getuser($this->session->userdata('username'))->row()->name;
-        var_dump($cash);
+        $invoice            = FormatNoTrans(OtomatisID());
+        $grand_total        = $this->cart->grand_total();
+        $param['cash']      = $this->input->post('cash');
+        $param['customer']  = $this->input->post('customer');
+        $param['cashier']   = $this->auth->getuser($this->session->userdata('username'))->row()->name;
     }
 
     public function delete($id)
