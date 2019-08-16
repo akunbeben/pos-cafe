@@ -57,6 +57,8 @@ class Pos extends CI_Controller
         $invoice            = FormatNoTrans(OtomatisID());
         $param              = [
             'id'            => $invoice,
+            'cashier'       => $this->auth->getuser($this->session->userdata('username'))->row()->name,
+            'customer'      => $this->input->post('customer'),
             'total'         => $this->cart->grandTotal(),
             'profit'        => $this->cart->profit(),
             'cash_in'       => $this->input->post('cash'),
@@ -90,6 +92,6 @@ class Pos extends CI_Controller
 
     public function dump()
     {
-        var_dump($this->pos->last_row());
+        var_dump($this->auth->getuser($this->session->userdata('username'))->row()->name);
     }
 }

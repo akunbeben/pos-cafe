@@ -140,7 +140,7 @@
                                     <label for="cash" class="col-sm-4 col-form-label">Cash</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control" id="cash" name="cash" required>
-                                        <!-- <input type="hidden" class="form-control customer" id="customer" name="customer" onkeyup="getCustomer()"> -->
+                                        <input type="hidden" class="form-control customer" id="customer" name="customer">
                                     </div>
                                 </div>
                                 <div class="form-group row">

@@ -43,16 +43,16 @@
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell-o"></i>
                         <?php if ($booking >= 1) : ?>
-                            <span class="badge badge-warning navbar-badge"><?= $booking; ?></span>
+                        <span class="badge badge-warning navbar-badge"><?= $booking; ?></span>
                         <?php endif; ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header"><?= $booking; ?> Notifications</span>
                         <div class="dropdown-divider"></div>
                         <?php if ($booking >= 1) : ?>
-                            <a href="<?= base_url('reservation'); ?>" class="dropdown-item">
-                                <i class="fa fa-book mr-2"></i> <?= $booking; ?> new reservation
-                            </a>
+                        <a href="<?= base_url('reservation'); ?>" class="dropdown-item">
+                            <i class="fa fa-book mr-2"></i> <?= $booking; ?> new reservation
+                        </a>
                         <?php endif; ?>
                     </div>
                 </li>
@@ -91,32 +91,32 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <?php if ($user['role'] == 1) : ?>
-                            <li class="nav-header ml-2">FRONT OFFICE</li>
-                            <li class="nav-item">
-                                <a href="<?= base_url('admin'); ?>" class="nav-link <?= $this->uri->segment(1) == 'admin' ? 'active' : ''; ?>">
-                                    <i class="nav-icon fa fa-tachometer"></i>
-                                    <p>
-                                        Dashboard
-                                        <!-- <span class="right badge badge-success">New</span> -->
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= base_url('product'); ?>" class="nav-link <?= $this->uri->segment(1) == 'product' ? 'active' : ''; ?>">
-                                    <i class="nav-icon fa fa-archive"></i>
-                                    <p>
-                                        Products
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= base_url('category'); ?>" class="nav-link <?= $this->uri->segment(1) == 'category' ? 'active' : ''; ?>">
-                                    <i class="nav-icon fa fa-info"></i>
-                                    <p>
-                                        Categories
-                                    </p>
-                                </a>
-                            </li>
+                        <li class="nav-header ml-2">FRONT OFFICE</li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin'); ?>" class="nav-link <?= $this->uri->segment(1) == 'admin' ? 'active' : ''; ?>">
+                                <i class="nav-icon fa fa-tachometer"></i>
+                                <p>
+                                    Dashboard
+                                    <!-- <span class="right badge badge-success">New</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('product'); ?>" class="nav-link <?= $this->uri->segment(1) == 'product' ? 'active' : ''; ?>">
+                                <i class="nav-icon fa fa-archive"></i>
+                                <p>
+                                    Products
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('category'); ?>" class="nav-link <?= $this->uri->segment(1) == 'category' ? 'active' : ''; ?>">
+                                <i class="nav-icon fa fa-info"></i>
+                                <p>
+                                    Categories
+                                </p>
+                            </a>
+                        </li>
                         <?php endif; ?>
                         <li class="nav-item">
                             <a href="<?= base_url('reservation'); ?>" class="nav-link <?= $this->uri->segment(1) == 'reservation' ? 'active' : ''; ?>">
@@ -124,7 +124,7 @@
                                 <p>
                                     Reservation
                                     <?php if ($booking >= 1) : ?>
-                                        <span class="right badge badge-danger">New</span>
+                                    <span class="right badge badge-danger">New</span>
                                     <?php endif; ?>
                                 </p>
                             </a>
@@ -162,19 +162,19 @@
                             </a>
                         </li>
                         <?php if ($user['role'] == 1) : ?>
-                            <li class="nav-header">BACK OFFICE</li>
-                            <li class="nav-item">
-                                <a href="<?= base_url('employees'); ?>" class="nav-link">
-                                    <i class="nav-icon fa fa-circle-o text-info"></i>
-                                    <p>Employees</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= base_url('users'); ?>" class="nav-link">
-                                    <i class="nav-icon fa fa-circle-o text-info"></i>
-                                    <p>Users</p>
-                                </a>
-                            </li>
+                        <li class="nav-header">BACK OFFICE</li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('employees'); ?>" class="nav-link">
+                                <i class="nav-icon fa fa-circle-o text-info"></i>
+                                <p>Employees</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('users'); ?>" class="nav-link">
+                                <i class="nav-icon fa fa-circle-o text-info"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
                         <?php endif; ?>
                     </ul>
                 </nav>
@@ -215,6 +215,15 @@
     <script src="<?= base_url('backend'); ?>/myscript.js"></script>
     <script src="<?= base_url('backend'); ?>/btn.js"></script>
     <script src="<?= base_url('backend'); ?>/cart.js"></script>
+    <script>
+        $('#cust').keyup(function() {
+            update();
+        });
+
+        function update() {
+            $('#customer').val($('#cust').val());
+        }
+    </script>
     <script>
         $(function() {
             $("#example1").DataTable();
