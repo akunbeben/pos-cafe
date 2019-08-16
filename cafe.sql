@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2019 at 05:49 AM
+-- Generation Time: Aug 16, 2019 at 03:13 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -172,6 +172,8 @@ INSERT INTO `reservation` (`id`, `name`, `phone`, `status`, `booking_at`, `tag`)
 
 CREATE TABLE `sales` (
   `id` varchar(128) NOT NULL,
+  `cashier` varchar(128) NOT NULL,
+  `customer` varchar(128) NOT NULL,
   `total` int(11) NOT NULL,
   `profit` int(11) NOT NULL,
   `cash_in` int(11) NOT NULL,
@@ -183,8 +185,8 @@ CREATE TABLE `sales` (
 -- Dumping data for table `sales`
 --
 
-INSERT INTO `sales` (`id`, `total`, `profit`, `cash_in`, `cashback`, `sales_date`) VALUES
-('KP00001', 43000, 25000, 50000, 7000, 1565927048);
+INSERT INTO `sales` (`id`, `cashier`, `customer`, `total`, `profit`, `cash_in`, `cashback`, `sales_date`) VALUES
+('KP00001', 'Benny Rahmat', 'Hehen', 8000, 5000, 10000, 2000, 1565961087);
 
 -- --------------------------------------------------------
 
@@ -204,9 +206,7 @@ CREATE TABLE `sales_detail` (
 --
 
 INSERT INTO `sales_detail` (`id`, `sales_id`, `items`, `sold_qty`) VALUES
-(11, 'KP00001', 6, 2),
-(12, 'KP00001', 2, 1),
-(13, 'KP00001', 1, 1);
+(26, 'KP00001', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -345,13 +345,13 @@ ALTER TABLE `booking_status`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `cart_total`
 --
 ALTER TABLE `cart_total`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -381,7 +381,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT for table `sales_detail`
 --
 ALTER TABLE `sales_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `units`

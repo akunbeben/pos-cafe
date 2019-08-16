@@ -73,6 +73,12 @@ class Pos extends CI_Controller
             $this->pos->process($param);
             $this->pos->addDetail($this->pos->last_row()->id);
             $this->cart->clear();
+            $cashback       = $this->pos->last_row()->cashback;
+            if ($cashback == 0) {
+                $this->session->set_flashdata('posmsg', 'Your order is complete');
+            } else {
+                $this->session->set_flashdata('posmsg', 'Your order is complete, your cashback is ' . rupiah($cashback));
+            }
             redirect('pos/');
         }
     }

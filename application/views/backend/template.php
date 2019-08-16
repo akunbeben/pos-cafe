@@ -215,6 +215,7 @@
     <script src="<?= base_url('backend'); ?>/myscript.js"></script>
     <script src="<?= base_url('backend'); ?>/btn.js"></script>
     <script src="<?= base_url('backend'); ?>/cart.js"></script>
+    <script src="<?= base_url('backend'); ?>/pos.js"></script>
     <script>
         $('#cust').keyup(function() {
             update();

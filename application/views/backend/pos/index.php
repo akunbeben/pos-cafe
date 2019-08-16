@@ -5,6 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="cart-data" data-cartmessage="<?= $this->session->flashdata('message'); ?>"></div>
+                <div class="pos-data" data-posmessage="<?= $this->session->flashdata('posmsg'); ?>"></div>
                 <div class="col-sm-6">
                     <h1>Point Of Sales</h1>
                 </div>
