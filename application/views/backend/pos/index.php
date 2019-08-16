@@ -1,12 +1,3 @@
-<script>
-    function getCustomer() {
-        var custname = document.getElementById('cust').value;
-        var result = custname;
-        if (!isNaN(result)) {
-            document.getElementById('customer').value = result;
-        }
-    }
-</script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -47,7 +38,7 @@
                                 <div class="form-group row py-2">
                                     <label for="inputEmail3" class="col-sm-4 col-form-label">Customer</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="cust" name="cust">
+                                        <input type="text" class="form-control cust" id="cust" name="cust">
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +59,7 @@
                                         <select name="product" id="product" style="width: 100%; height: 100%">
                                             <option value="" selected> -- Choose Product -- </option>
                                             <?php foreach ($products as $key => $allprod) : ?>
-                                                <option value="<?= $allprod['id']; ?>"><?= $allprod['item_name']; ?></option>
+                                            <option value="<?= $allprod['id']; ?>"><?= $allprod['item_name']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -123,16 +114,16 @@
                                 <?php
                                 $no = 1;
                                 foreach ($cart as $key => $carts) : ?>
-                                    <tr>
-                                        <td class="text-center"><?= $no++; ?></td>
-                                        <td><?= $carts['item_name']; ?></td>
-                                        <td><?= rupiah($carts['selling_price']); ?></td>
-                                        <td><?= $carts['qty']; ?></td>
-                                        <td><?= rupiah($carts['selling_price'] * $carts['qty']); ?></td>
-                                        <td class="text-center">
-                                            <a class="btn-sm btn-danger tombol-cart" href="<?= base_url('pos/delete/') . $carts['id']; ?>"><i class="fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="text-center"><?= $no++; ?></td>
+                                    <td><?= $carts['item_name']; ?></td>
+                                    <td><?= rupiah($carts['selling_price']); ?></td>
+                                    <td><?= $carts['qty']; ?></td>
+                                    <td><?= rupiah($carts['selling_price'] * $carts['qty']); ?></td>
+                                    <td class="text-center">
+                                        <a class="btn-sm btn-danger tombol-cart" href="<?= base_url('pos/delete/') . $carts['id']; ?>"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -149,7 +140,7 @@
                                     <label for="cash" class="col-sm-4 col-form-label">Cash</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control" id="cash" name="cash" required>
-                                        <input type="text" class="form-control" id="customer" name="customer" onkeyup="getCustomer()">
+                                        <!-- <input type="hidden" class="form-control customer" id="customer" name="customer" onkeyup="getCustomer()"> -->
                                     </div>
                                 </div>
                                 <div class="form-group row">

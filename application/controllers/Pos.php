@@ -12,6 +12,7 @@ class Pos extends CI_Controller
         $this->load->model('reservations');
         $this->load->model('products');
         $this->load->model('cart');
+        $this->load->model('pos_process', 'pos');
     }
 
     public function index()
@@ -43,7 +44,8 @@ class Pos extends CI_Controller
             $isi = [
                 'id'            => null,
                 'cart_id'       => $qty['id'],
-                'sub_total'     => $product['selling_price'] * $qty['qty']
+                'sub_total'     => $product['selling_price'] * $qty['qty'],
+                'profit'        => ($product['selling_price'] - $product['purchase_price']) * $qty['qty']
             ];
             $this->cart->sub_total($isi);
             redirect('pos/');
@@ -53,10 +55,24 @@ class Pos extends CI_Controller
     public function process()
     {
         $invoice            = FormatNoTrans(OtomatisID());
-        $grand_total        = $this->cart->grand_total();
-        $param['cash']      = $this->input->post('cash');
-        $param['customer']  = $this->input->post('customer');
-        $param['cashier']   = $this->auth->getuser($this->session->userdata('username'))->row()->name;
+        $param              = [
+            'id'            => $invoice,
+            'total'         => $this->cart->grandTotal(),
+            'profit'        => $this->cart->profit(),
+            'cash_in'       => $this->input->post('cash'),
+            'cashback'      => $this->input->post('cash') - $this->cart->grandTotal(),
+            'sales_date'    => time()
+        ];
+
+        if ($this->cart->getCartData()->num_rows() <= 0) {
+            $this->session->set_flashdata('message', 'Cart is empty, cannot complete this payment.');
+            redirect('pos/');
+        } else {
+            $this->pos->process($param);
+            $this->pos->addDetail($this->pos->last_row()->id);
+            $this->cart->clear();
+            redirect('pos/');
+        }
     }
 
     public function delete($id)
@@ -70,5 +86,10 @@ class Pos extends CI_Controller
     {
         $this->cart->clear();
         redirect('pos/');
+    }
+
+    public function dump()
+    {
+        var_dump($this->pos->last_row());
     }
 }

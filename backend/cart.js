@@ -2,7 +2,7 @@ const cartMessage = $('.cart-data').data('cartmessage');
 
 if (cartMessage) {
     Swal.fire({
-        title: 'Pending Order',
+        title: 'Orders',
         text: cartMessage,
         type: 'warning'
     });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2019 at 04:53 AM
+-- Generation Time: Aug 16, 2019 at 05:49 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -40,6 +40,31 @@ CREATE TABLE `booking_status` (
 INSERT INTO `booking_status` (`id`, `status_b`) VALUES
 (1, 'pending'),
 (3, 'completed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_total`
+--
+
+CREATE TABLE `cart_total` (
+  `id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `sub_total` int(11) NOT NULL,
+  `profit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -106,12 +131,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `item_name`, `image`, `purchase_price`, `selling_price`, `profit`, `category`, `unit`) VALUES
-(1, 'Champagne', 'Akarua-winery-650x350.jpg', 50000, 120000, 70000, 14, 1),
-(2, 'Rum Busted Barrel', 'bustedbarrel-650x350.jpg', 80000, 150000, 70000, 14, 1),
-(3, 'Pepperoni Pizza', 'pepperoni-pizza-dough-boys-vb-650x350.jpg', 50000, 100000, 50000, 1, 2),
-(5, 'Chicken Nugget', 'slider3.jpg', 10000, 18000, 8000, 3, 1),
-(6, 'Grilled Beef', 'The-Meetball-Place-@foodNfest-noBSfood-1-650x350.jpg', 80000, 190000, 110000, 1, 2),
-(7, 'Fried Chicken', 'buffalo-chicken-meatballs-coated-pic-650x3501.jpg', 25000, 50000, 25000, 1, 1);
+(1, 'Wedang Uwuh', 'Akarua-winery-650x350.jpg', 5000, 12000, 7000, 2, 1),
+(2, 'Teh Tarik', 'bustedbarrel-650x350.jpg', 7000, 15000, 8000, 2, 1),
+(3, 'Tahu Crispy', 'pepperoni-pizza-dough-boys-vb-650x350.jpg', 5000, 12000, 7000, 3, 1),
+(5, 'Kentang Goreng', 'slider3.jpg', 5000, 12000, 7000, 3, 4),
+(6, 'Indomie Goreng', 'The-Meetball-Place-@foodNfest-noBSfood-1-650x350.jpg', 3000, 8000, 5000, 1, 1),
+(7, 'Indomie Kuah', 'buffalo-chicken-meatballs-coated-pic-650x3501.jpg', 3000, 8000, 5000, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -133,10 +158,55 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `name`, `phone`, `status`, `booking_at`, `tag`) VALUES
-(9, 'Benny Rahmat', '082253054008', 3, '1565230304', 'Charina Zahratunnisa'),
-(10, 'Dewi Sunartini', '081351727648', 3, '1565230365', 'Benny Rahmat'),
-(11, 'Charina Zahratunnisa', '082355130919', 3, '1565231155', 'Benny Rahmat'),
-(12, 'Ikhtiar', '081349798787', 3, '1565231280', 'Benny Rahmat');
+(1, 'Charina Zahratunnisa', '123123123123', 3, '1565405379', 'Benny Rahmat'),
+(2, 'Hendy Prasetyo', '123412341234', 3, '1565412836', 'Benny Rahmat'),
+(3, 'Dewi Sunartini', '87687676876', 3, '1565413447', 'Benny Rahmat'),
+(4, 'tes', '123123123', 3, '1565527735', 'Benny Rahmat'),
+(5, 'Benny Rahmat', '082253054008', 3, '1565532244', 'Benny Rahmat');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales`
+--
+
+CREATE TABLE `sales` (
+  `id` varchar(128) NOT NULL,
+  `total` int(11) NOT NULL,
+  `profit` int(11) NOT NULL,
+  `cash_in` int(11) NOT NULL,
+  `cashback` int(11) NOT NULL,
+  `sales_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `total`, `profit`, `cash_in`, `cashback`, `sales_date`) VALUES
+('KP00001', 43000, 25000, 50000, 7000, 1565927048);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales_detail`
+--
+
+CREATE TABLE `sales_detail` (
+  `id` int(11) NOT NULL,
+  `sales_id` varchar(128) NOT NULL,
+  `items` int(11) NOT NULL,
+  `sold_qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sales_detail`
+--
+
+INSERT INTO `sales_detail` (`id`, `sales_id`, `items`, `sold_qty`) VALUES
+(11, 'KP00001', 6, 2),
+(12, 'KP00001', 2, 1),
+(13, 'KP00001', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -194,6 +264,20 @@ ALTER TABLE `booking_status`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
+-- Indexes for table `cart_total`
+--
+ALTER TABLE `cart_total`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cart_id` (`cart_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -221,6 +305,20 @@ ALTER TABLE `reservation`
   ADD KEY `status` (`status`);
 
 --
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sales_detail`
+--
+ALTER TABLE `sales_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sales_id` (`sales_id`),
+  ADD KEY `items` (`items`);
+
+--
 -- Indexes for table `units`
 --
 ALTER TABLE `units`
@@ -244,6 +342,18 @@ ALTER TABLE `booking_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `cart_total`
+--
+ALTER TABLE `cart_total`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -265,7 +375,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `sales_detail`
+--
+ALTER TABLE `sales_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `units`
@@ -284,6 +400,18 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cart_total`
+--
+ALTER TABLE `cart_total`
+  ADD CONSTRAINT `cart_total_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
@@ -295,6 +423,13 @@ ALTER TABLE `products`
 --
 ALTER TABLE `reservation`
   ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`status`) REFERENCES `booking_status` (`id`);
+
+--
+-- Constraints for table `sales_detail`
+--
+ALTER TABLE `sales_detail`
+  ADD CONSTRAINT `sales_detail_ibfk_1` FOREIGN KEY (`sales_id`) REFERENCES `sales` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sales_detail_ibfk_2` FOREIGN KEY (`items`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`

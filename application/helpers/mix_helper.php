@@ -49,7 +49,7 @@ function FormatNoTrans($num)
 function OtomatisID()
 {
     $ci = &get_instance();
-    $ci->db->from('cart');
+    $ci->db->from('sales');
     $result = $ci->db->get()->num_rows();
     return $result;
 }

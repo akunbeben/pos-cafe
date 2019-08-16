@@ -24,6 +24,12 @@ class Cart extends CI_Model
         return $this->db->query($query)->row()->grand_total;
     }
 
+    public function profit()
+    {
+        $query = 'SELECT sum(profit) AS profit FROM cart_total';
+        return $this->db->query($query)->row()->profit;
+    }
+
     public function sub_total($isi)
     {
         $cart = $this->db->select('*')->from('cart_total')->where('cart_id', $isi['cart_id'])->get()->row_array();
