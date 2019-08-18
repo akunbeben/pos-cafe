@@ -19,4 +19,9 @@ class Pos_process extends CI_Model
     {
         return $this->db->from('sales')->order_by('id DESC')->limit(1)->get()->row();
     }
+
+    public function get()
+    {
+        return $this->db->from('sales')->get()->num_rows();
+    }
 }

@@ -64,7 +64,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Sales Today</span>
                 <span class="info-box-number">
-                  14
+                  <?= $sales; ?>
                   <small>Sales</small>
                 </span>
               </div>
