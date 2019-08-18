@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2019 at 03:13 PM
+-- Generation Time: Aug 18, 2019 at 04:49 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -131,12 +131,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `item_name`, `image`, `purchase_price`, `selling_price`, `profit`, `category`, `unit`) VALUES
-(1, 'Wedang Uwuh', 'Akarua-winery-650x350.jpg', 5000, 12000, 7000, 2, 1),
-(2, 'Teh Tarik', 'bustedbarrel-650x350.jpg', 7000, 15000, 8000, 2, 1),
-(3, 'Tahu Crispy', 'pepperoni-pizza-dough-boys-vb-650x350.jpg', 5000, 12000, 7000, 3, 1),
-(5, 'Kentang Goreng', 'slider3.jpg', 5000, 12000, 7000, 3, 4),
-(6, 'Indomie Goreng', 'The-Meetball-Place-@foodNfest-noBSfood-1-650x350.jpg', 3000, 8000, 5000, 1, 1),
-(7, 'Indomie Kuah', 'buffalo-chicken-meatballs-coated-pic-650x3501.jpg', 3000, 8000, 5000, 1, 1);
+(12, 'Wedang Uwuh', 'Akarua-winery-650x350.jpg', 5000, 12000, 7000, 2, 1),
+(13, 'Teh Tarik', 'bustedbarrel-650x350.jpg', 5000, 12000, 7000, 2, 1),
+(14, 'Kentang Goreng', 'cara-mudah-bikin-kentang-goreng-kembali-renyah-190225t.jpg', 7000, 18000, 11000, 1, 4),
+(15, 'Tahu Crispy', 'slider3.jpg', 7000, 15000, 8000, 1, 4),
+(16, 'Indomie Goreng', 'buffalo-chicken-meatballs-coated-pic-650x350.jpg', 3000, 8000, 5000, 1, 4),
+(17, 'Indomie Kuah', 'The-Meetball-Place-@foodNfest-noBSfood-1-650x350.jpg', 3000, 8000, 5000, 1, 4),
+(18, 'Anggur Merah', 'DFf624cXsAAom32.jpg', 10000, 12000, 2000, 1, 1),
+(19, 'Rum Busted Barrel', 'CREDS-PR-CCDARK-2A-lr.jpg', 12000, 15000, 3000, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -200,13 +202,6 @@ CREATE TABLE `sales_detail` (
   `items` int(11) NOT NULL,
   `sold_qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `sales_detail`
---
-
-INSERT INTO `sales_detail` (`id`, `sales_id`, `items`, `sold_qty`) VALUES
-(26, 'KP00001', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -345,13 +340,13 @@ ALTER TABLE `booking_status`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cart_total`
 --
 ALTER TABLE `cart_total`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -363,13 +358,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `reservation`
@@ -393,7 +388,7 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
