@@ -7,6 +7,7 @@ class Product extends CI_Controller
     {
         parent::__construct();
         is_not_login();
+        is_admin();
         $this->load->model('auth_model', 'auth');
         $this->load->model('products');
         $this->load->model('properties');
@@ -64,7 +65,7 @@ class Product extends CI_Controller
                 $img_upload = $_FILES['image']['name'];
                 if ($img_upload) {
                     $config['allowed_types']    = 'gif|jpg|png|jpeg';
-                    $config['max_size']         = '2048';
+                    $config['max_size']         = '4096';
                     $config['upload_path']      = './uploads/product/';
                     $config['overwrite']        = true;
 
@@ -72,6 +73,16 @@ class Product extends CI_Controller
 
                     if ($this->upload->do_upload('image')) {
                         $image = $this->upload->data('file_name');
+                        $conf['image_library']    = 'gd2';
+                        $conf['source_image']     = './uploads/product/' . $image;
+                        $conf['create_thumb']     = FALSE;
+                        $conf['maintain_ratio']   = FALSE;
+                        $conf['width']            = 650;
+                        $conf['height']           = 350;
+                        $conf['new_image']        = './uploads/product/' . $image;
+
+                        $this->load->library('image_lib', $conf);
+                        $this->image_lib->resize();
                     } else {
                         echo $this->upload->display_errors();
                     }
@@ -125,13 +136,22 @@ class Product extends CI_Controller
             $img_upload = $_FILES['image']['name'];
             if ($img_upload) {
                 $config['allowed_types']    = 'gif|jpg|png|jpeg';
-                $config['max_size']         = '2048';
+                $config['max_size']         = '4096';
                 $config['upload_path']      = './uploads/product/';
 
                 $this->load->library('upload', $config);
 
                 if ($this->upload->do_upload('image')) {
                     $image = $this->upload->data('file_name');
+                    $conf['image_library']    = 'gd2';
+                    $conf['source_image']     = './uploads/product/' . $image;
+                    $conf['create_thumb']     = FALSE;
+                    $conf['maintain_ratio']   = FALSE;
+                    $conf['width']            = 650;
+                    $conf['height']           = 350;
+                    $conf['new_image']        = './uploads/product/' . $image;
+                    $this->load->library('image_lib', $conf);
+                    $this->image_lib->resize();
                 } else {
                     echo $this->upload->display_errors();
                 }

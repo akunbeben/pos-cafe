@@ -6,6 +6,8 @@ class Category extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_admin();
+        is_not_login();
         $this->load->model('auth_model', 'auth');
         $this->load->model('properties');
         $this->load->model('reservations');

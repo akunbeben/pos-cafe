@@ -35,9 +35,9 @@ class Profile extends CI_Controller
         } else {
             $img_upload = $_FILES['image']['name'];
             if ($img_upload) {
-                $config['allowed_types']    = 'gif|jpg|png|jpeg';
-                $config['max_size']         = '2048';
-                $config['upload_path']      = './uploads/profile/';
+                $config['allowed_types']        = 'gif|jpg|png|jpeg';
+                $config['max_size']             = '2048';
+                $config['upload_path']          = './uploads/profile/';
 
                 $this->load->library('upload', $config);
 

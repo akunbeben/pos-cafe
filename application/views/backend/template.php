@@ -90,7 +90,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <?php if ($user['role'] == 1) : ?>
+
                         <li class="nav-header ml-2">FRONT OFFICE</li>
                         <li class="nav-item">
                             <a href="<?= base_url('admin'); ?>" class="nav-link <?= $this->uri->segment(1) == 'admin' ? 'active' : ''; ?>">
@@ -101,6 +101,7 @@
                                 </p>
                             </a>
                         </li>
+                        <?php if ($user['role'] == 1) : ?>
                         <li class="nav-item">
                             <a href="<?= base_url('product'); ?>" class="nav-link <?= $this->uri->segment(1) == 'product' ? 'active' : ''; ?>">
                                 <i class="nav-icon fa fa-archive"></i>
@@ -164,14 +165,14 @@
                         <?php if ($user['role'] == 1) : ?>
                         <li class="nav-header">BACK OFFICE</li>
                         <li class="nav-item">
-                            <a href="<?= base_url('employees'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-info"></i>
+                            <a href="<?= base_url('employee'); ?>" class="nav-link <?= $this->uri->segment(1) == 'employee' ? 'active' : ''; ?>">
+                                <i class="nav-icon fa fa-circle-o text-<?= $this->uri->segment(1) == 'employee' ? 'secondary' : 'info'; ?>"></i>
                                 <p>Employees</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('users'); ?>" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-info"></i>
+                            <a href="<?= base_url('users'); ?>" class="nav-link <?= $this->uri->segment(1) == 'users' ? 'active' : ''; ?>">
+                                <i class="nav-icon fa fa-circle-o text-<?= $this->uri->segment(1) == 'users' ? 'secondary' : 'info'; ?>"></i>
                                 <p>Users</p>
                             </a>
                         </li>
@@ -215,6 +216,7 @@
     <script src="<?= base_url('backend'); ?>/myscript.js"></script>
     <script src="<?= base_url('backend'); ?>/btn.js"></script>
     <script src="<?= base_url('backend'); ?>/cart.js"></script>
+    <script src="<?= base_url('backend'); ?>/employee.js"></script>
     <script src="<?= base_url('backend'); ?>/pos.js"></script>
     <script>
         $('#cust').keyup(function() {

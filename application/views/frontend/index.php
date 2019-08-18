@@ -126,16 +126,16 @@
         <div class="container-fluid p-0">
             <div class="row no-gutters">
                 <?php foreach ($products as $key => $prod) : ?>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="<?= base_url('uploads/product/') . $prod['image']; ?>">
-                            <img class="img-fluid" src="<?= base_url('uploads/product/') . $prod['image']; ?>" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">
-                                    <?= $prod['item_name']; ?>
-                                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="<?= base_url('uploads/product/') . $prod['image']; ?>">
+                        <img class="img-fluid" src="<?= base_url('uploads/product/') . $prod['image']; ?>" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">
+                                <?= $prod['item_name']; ?>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>

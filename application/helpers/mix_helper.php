@@ -11,6 +11,15 @@ function is_not_login()
     }
 }
 
+function is_admin()
+{
+    $ci = &get_instance();
+    if ($ci->session->userdata('role') != 1) {
+        $ci->session->set_flashdata('message', 'You have no access to this menu!');
+        redirect('admin/');
+    }
+}
+
 function kode_random($length)
 {
     $data = '1234567890';

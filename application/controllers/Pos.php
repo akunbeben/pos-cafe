@@ -98,6 +98,7 @@ class Pos extends CI_Controller
 
     public function dump()
     {
-        var_dump($this->auth->getuser($this->session->userdata('username'))->row()->name);
+        $this->load->model('employee_model', 'employees');
+        var_dump($this->employees->get(1)->row());
     }
 }

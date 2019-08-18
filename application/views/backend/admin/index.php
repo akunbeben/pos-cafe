@@ -19,7 +19,7 @@
 
       <!-- Main content -->
       <section class="content">
-
+        <div class="flash-admin" data-flashadmin="<?= $this->session->flashdata('message'); ?>"></div>
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">

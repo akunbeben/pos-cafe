@@ -37,14 +37,13 @@ class Products extends CI_Model
     {
         if ($param['image'] == null) {
             $this->db->set('item_name', $param['item_name']);
-            $this->db->set('image', $param['image']);
             $this->db->set('purchase_price', $param['purchase_price']);
             $this->db->set('selling_price', $param['selling_price']);
             $this->db->set('profit', $param['profit']);
             $this->db->set('category', $param['category']);
             $this->db->set('unit', $param['unit']);
             $this->db->where('id', $param['id']);
-            $this->db->replace('products', $param);
+            $this->db->update('products');
         } else {
             $this->db->set('item_name', $param['item_name']);
             $this->db->set('image', $param['image']);
@@ -54,7 +53,7 @@ class Products extends CI_Model
             $this->db->set('category', $param['category']);
             $this->db->set('unit', $param['unit']);
             $this->db->where('id', $param['id']);
-            $this->db->replace('products', $param);
+            $this->db->update('products');
         }
     }
 

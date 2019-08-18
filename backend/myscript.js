@@ -58,3 +58,13 @@ $('.tombol-baru').on('click', function (e) {
     })
 
 });
+
+const flashadmin = $('.flash-admin').data('flashadmin');
+
+if (flashadmin) {
+    Swal.fire({
+        title: 'Access Denied',
+        text: flashadmin,
+        type: 'error'
+    });
+};

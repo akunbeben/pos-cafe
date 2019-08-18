@@ -44,7 +44,8 @@ class Auth extends CI_Controller
                     'employee_id'   => $getuserfromDB['employee_id'],
                     'username'      => $getuserfromDB['username'],
                     'email'         => $getuserfromDB['email'],
-                    'date_created'  => $getuserfromDB['date_created']
+                    'date_created'  => $getuserfromDB['date_created'],
+                    'role'          => $getuserfromDB['role']
                 ];
                 $this->session->set_userdata($data);
                 redirect('admin');
