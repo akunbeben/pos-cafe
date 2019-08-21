@@ -33,7 +33,12 @@ class Product extends CI_Controller
             $this->session->set_flashdata('message', 'Id cannot be empty.');
             redirect('product/');
         } else {
-            $this->template->load('backend/template', 'backend/product/view', $data);
+            if ($data['detailprod'] == null) {
+                $this->session->set_flashdata('message', 'Invalid ID!.');
+                redirect('product/');
+            } else {
+                $this->template->load('backend/template', 'backend/product/view', $data);
+            }
         }
     }
 
@@ -169,7 +174,6 @@ class Product extends CI_Controller
                     'category'          => $this->input->post('category'),
                     'unit'              => $this->input->post('unit')
                 ];
-                // var_dump($param);
                 $this->products->addProduct($param);
                 $this->session->set_flashdata('message', 'New product added.');
                 redirect('product/');

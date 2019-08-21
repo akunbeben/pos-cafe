@@ -158,10 +158,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="row justify-content-end my-4">
-                            <a class="btn-lg btn-warning clear-cart" href="<?= base_url('pos/clear'); ?>"><i class="fa fa-refresh"></i> New Payment</a>
+                            <a class="btn-lg btn-warning clear-cart" href="<?= base_url('pos/clear'); ?>"><i class="fa fa-refresh"></i> New Order</a>
                         </div>
                         <div class="row justify-content-end mb-4">
-                            <button class="btn-lg btn-success" type="submit"><i class="fa fa-send"></i> Process Payment</button>
+                            <button class="btn-lg btn-success" type="submit"><i class="fa fa-send"></i> Process Order</button>
                         </div>
                     </div>
                 </div>

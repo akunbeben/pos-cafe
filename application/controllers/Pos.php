@@ -63,7 +63,7 @@ class Pos extends CI_Controller
             'profit'        => $this->cart->profit(),
             'cash_in'       => $this->input->post('cash'),
             'cashback'      => $this->input->post('cash') - $this->cart->grandTotal(),
-            'sales_date'    => time()
+            'sales_date'    => null
         ];
 
         if ($this->cart->getCartData()->num_rows() <= 0) {

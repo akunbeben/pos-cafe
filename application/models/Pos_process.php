@@ -5,7 +5,12 @@ class Pos_process extends CI_Model
 {
     public function process($param)
     {
-        $this->db->insert('sales', $param);
+        if ($param['customer'] == null) {
+            $param['customer'] = 'Umum';
+            $this->db->insert('sales', $param);
+        } else {
+            $this->db->insert('sales', $param);
+        }
     }
 
     public function addDetail($no_invoice)

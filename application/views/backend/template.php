@@ -154,10 +154,10 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('reports'); ?>" class="nav-link">
+                            <a href="<?= base_url('report'); ?>" class="nav-link">
                                 <i class="nav-icon fa fa-print"></i>
                                 <p>
-                                    Reports
+                                    Report
                                     <!-- <span class="right badge badge-success">New</span> -->
                                 </p>
                             </a>
@@ -218,6 +218,7 @@
     <script src="<?= base_url('backend'); ?>/cart.js"></script>
     <script src="<?= base_url('backend'); ?>/employee.js"></script>
     <script src="<?= base_url('backend'); ?>/pos.js"></script>
+    <script src="<?= base_url('backend'); ?>/report.js"></script>
     <script>
         $('#cust').keyup(function() {
             update();
