@@ -46,7 +46,7 @@
                                         <td>
                                             <p class="badge badge-<?= $b_status['status_b'] == 'pending' ? 'danger' : 'success' ?>"><?= $b_status['status_b']; ?></p>
                                         </td>
-                                        <td><?= date("d m Y h:i a", $b_status['booking_at']); ?></td>
+                                        <td><?= date("d/m/Y h:i a", $b_status['booking_at']); ?></td>
                                         <td class="text-center">
                                             <?php if ($b_status['status_b'] == 'pending') : ?>
                                             <a href="<?= base_url('reservation/check/') . $b_status['id'] ?>" class="btn-sm btn-warning tombol-baru" id="tombol-baru"><i class="fa fa-check"></i></a>
