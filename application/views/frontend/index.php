@@ -15,7 +15,8 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
+        rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
     <link href="<?= base_url('frontend/'); ?>vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -31,7 +32,9 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -58,11 +61,14 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-10 align-self-end">
-                    <h1 class="text-uppercase text-white font-weight-bold">Your Favorite Source of Free Bootstrap Themes</h1>
+                    <h1 class="text-uppercase text-white font-weight-bold">Your Favorite Source of Free Bootstrap Themes
+                    </h1>
                     <hr class="divider my-4">
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75 font-weight-light mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
+                    <p class="text-white-75 font-weight-light mb-5">Start Bootstrap can help you build better websites
+                        using the Bootstrap framework! Just download a theme and start customizing, no strings attached!
+                    </p>
                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
                 </div>
             </div>
@@ -76,7 +82,9 @@
                 <div class="col-lg-8 text-center">
                     <h2 class="text-white mt-0">We've got what you need!</h2>
                     <hr class="divider light my-4">
-                    <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
+                    <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and
+                        running in no time! Choose one of our open source, free to download, and easy to use themes! No
+                        strings attached!</p>
                     <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
                 </div>
             </div>
@@ -157,18 +165,21 @@
                 <div class="col-lg-6 text-center">
                     <h2 class="mt-0">Let's have a seat in our place!</h2>
                     <hr class="divider">
-                    <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                    <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an
+                        email and we will get back to you as soon as possible!</p>
                     <form action="" method="post">
                         <div class="form-group row">
                             <div class="col-sm">
                                 <?= form_error('name', '<p class="text-danger">', '</p>'); ?>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Your name....">
+                                <input type="text" class="form-control" name="name" id="name"
+                                    placeholder="Your name....">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm">
                                 <?= form_error('phone', '<p class="text-danger">', '</p>'); ?>
-                                <input type="number" class="form-control" name="phone" id="phone" placeholder="Your phone number....">
+                                <input type="number" class="form-control" name="phone" id="phone"
+                                    placeholder="Your phone number....">
                             </div>
                         </div>
 
@@ -188,7 +199,9 @@
     <!-- Footer -->
     <footer class="bg-light py-5">
         <div class="container">
-            <div class="small text-center text-muted">Copyright &copy; 2019 - Borneo Creative</div>
+            <div class="small text-center text-muted">Copyright &copy; 2019 - Start Bootstrap | Developed by
+                <a href="https://github.com/akunbeben">Benny Rahmat</a>
+            </div>
         </div>
     </footer>
 
