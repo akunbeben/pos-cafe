@@ -36,7 +36,7 @@ class Employee extends CI_Controller
             $data['booking']    = $this->reservations->get(1)->num_rows();
             $data['user']       = $this->auth->getuser($this->session->userdata('username'))->row_array();
             $data['e_detail']   = $this->employees->get($id)->row();
-            $data['eu_detail']   = $this->employees->getUser($id)->row_array();
+            $data['eu_detail']  = $this->employees->get($id)->row_array();
             $this->template->load('backend/template', 'backend/employee/detail', $data);
         }
     }
