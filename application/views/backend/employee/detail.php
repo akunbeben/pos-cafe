@@ -56,7 +56,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="img-thumbnail img-fluid" src="<?= base_url('uploads/profile/') . $eu_detail->image; ?>" alt="User profile picture">
+                                <img class="img-thumbnail img-fluid" src="<?= base_url('uploads/profile/') . $e_detail->image; ?>" alt="User profile picture">
                             </div>
 
                             <h3 class="profile-username text-center"><?= $e_detail->name; ?></h3>
