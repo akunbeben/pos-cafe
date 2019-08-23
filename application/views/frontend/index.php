@@ -68,7 +68,7 @@
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white-75 font-weight-light mb-5">Go to this link to access into point of sales app.
                         user: akunbeben, pass:123
-                        <a href="<?= base_url('admin'); ?>" target="_blank">https://pos-cafe.herokuapp.com/</a>
+                        <a href="<?= base_url('admin'); ?>" target="_blank">https://pos-cafe.herokuapp.com/admin</a>
                     </p>
                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
                 </div>
