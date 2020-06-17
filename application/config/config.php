@@ -23,7 +23,7 @@ date_default_timezone_set("Asia/Makassar");
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://pos-cafe.herokuapp.com/';
+$config['base_url'] = 'http://localhost/cafe';
 
 /*
 |--------------------------------------------------------------------------
